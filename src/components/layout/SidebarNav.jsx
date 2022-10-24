@@ -1,17 +1,20 @@
-
+import { Link } from 'react-router-dom'
 const SidebarNav = () => {
    return (
       <nav>
-         <div class="side_navbar">
-               <span>Main Menu</span>
-               <a href="#" class="active">Dashboard</a>
-               <a href="#">Profile</a>
-               <a href="#">History</a>
+         <div className="side_navbar">
+               <span>Menú Principal</span>
+              {/*  <a href="#" className="active">Inicio</a> */}
+               <Link to="/">Página Uno</Link>
+               {/* <a href="#">Profile</a> */}
+               <Link to="/maindos">Página Dos</Link>
+               {/* <a href="#">History</a> */}
+               <Link to="/maintres">Página Tres</Link>
+               
                <a href="#">Application</a>
                <a href="#">My Account</a>
                <a href="#">Documnets</a>
-
-               <div class="links">
+               <div className="links">
                <span>Quick Link</span>
                <a href="#">Paypal</a>
                <a href="#">EasyPay</a>
