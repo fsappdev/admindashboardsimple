@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useContext, createContext } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Container from './components/layout/Container'
 import Header from './components/layout/Header'
@@ -14,21 +14,30 @@ import MainPageTres from './pages/MainPageTres'
 
 import './App.css'
 
-
+//Creamos un contexto para los datos, este se debe exportar 
+export const UserContext = createContext()
+export const SetUserContext = createContext()
 function App() {
   /* const [count, setCount] = useState(0) */
+  //const estadoInicial = {usuario: "default User"}
+  
+  const [nombreUser, setNombreUser] = useState({ usuario: "default User"})
 
   return (
     <>
       <Header/>
       <Container>
         <SidebarNav/>
-          
-        <Routes>
-          <Route path="/" element={<MainPageUno/>} />  
-          <Route path='/maindos' element={<MainPageDos/>}/>  
-          <Route path='/maintres' element={<MainPageTres/>}/>  
-        </Routes>
+
+        <SetUserContext.Provider value={setNombreUser}>  
+          <UserContext.Provider value={nombreUser}>
+            <Routes>
+              <Route path="/" element={<MainPageUno/>} />  
+              <Route path='/maindos' element={<MainPageDos/>}/>  
+              <Route path='/maintres' element={<MainPageTres/>}/>  
+            </Routes>
+          </UserContext.Provider>  
+        </SetUserContext.Provider>
 
         <Sidebar/>
       </Container>

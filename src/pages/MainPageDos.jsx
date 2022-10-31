@@ -1,14 +1,23 @@
-import React from 'react'
+import {useContext} from 'react'
+import {UserContext, SetUserContext} from '../App'
 
 const MainPageDos = () => {
+
+   const estadoInicial = useContext(UserContext)
+   const setearUsario = useContext(SetUserContext)
+   console.log("ESTADO INICIAL DESDE APP", estadoInicial)
+
+   //funcion que cambia el nombre del usuario
+   const setNuevoUsuario = () => setearUsario({usuario: "TERMINATOR🤖"})
+
    return (
       <>
          <div className="main-body">
             <h2>Main-Page-Dos</h2>
             <div className="promo_card">
             <h1>EasyPay - Pag 2 </h1>
-            <span>Lorem ipsum dolor sit amet.</span>
-            <button>Learn More</button>
+            <span>usuario conectado es: {estadoInicial.usuario}</span>
+            <button onClick={setNuevoUsuario}>CAMBIAR USUARIO</button>
             </div>
 
             <div className="history_lists">

@@ -1,6 +1,16 @@
-import React from 'react'
+import {useContext} from 'react'
+import {UserContext, SetUserContext} from '../App'
 
 const MainPageTres = () => {
+
+   const estadoInicial = useContext(UserContext)
+   const setearUsario = useContext(SetUserContext)
+   console.log("ESTADO INICIAL DESDE APP", estadoInicial)
+
+   //funcion que cambia el nombre del usuario
+   const setNuevoUsuario = () => setearUsario({usuario: "JOHN CONNOR😎"})
+
+
    return (
       <>
          <div className="main-body">
@@ -10,9 +20,9 @@ const MainPageTres = () => {
             
             <h1>EasyPay - Pag 3 </h1>
             
-            <span>Lorem ipsum dolor sit amet.</span>
+            <span>usuario conectado es: {estadoInicial.usuario}</span>
             
-            <button>Learn More</button>
+            <button onClick={setNuevoUsuario}>CAMBIAR USUARIO</button>
          </div>
 
             <div className="history_lists">
